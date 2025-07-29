@@ -1,0 +1,22 @@
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  <label>Email:</label><br>
+  <input type="email" name="email" required><br><br>
+
+  <label>Password:</label><br>
+  <input type="password" name="password" required><br><br>
+
+  <button type="submit">Login</button>
+</form>
+
+{% if error %}
+  <p style="color: red">{{ error }}</p>
+{% endif %}
+
+{% if request.session.user_email %}
+  <p>Logged in as: {{ request.session.user_email }}</p>
+  <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+{% endif %}

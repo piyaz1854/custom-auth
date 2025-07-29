@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #f5f1f1;
+            --text: #000000;
+            --accent: #0070f3;
+            --muted: #777;
+            --border: #eaeaea;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div><strong>{{title}}</strong></div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/#docs">Docs</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Privacy Policy</h1>
+
+    <p>This application does not collect, share or sell any personal data to third parties.</p>
+
+    <p>All user data (email, name, roles, permissions) is stored securely on our local server and is used solely to demonstrate role-based access control features. No data is used for commercial purposes.</p>
+
+    <p>Passwords are stored in a hashed format using bcrypt. We do not log raw passwords or tokens.</p>
+
+    <p>By using this system, you agree that all actions are for demonstration or testing purposes only, and no real sensitive information is required or expected.</p>
+
+    <p>If you have any questions regarding this policy, feel free to <a href="{% url 'contact' %}">contact me</a>.</p>
+</main>
+
+<footer>
+    <a href="{% url 'privacy' %}">Privacy Policy</a> |
+    <a href="{% url 'contact' %}">Contact</a>
+    <div style="margin-top: 0.5rem;">&copy; {{ year }} {{ title }}. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

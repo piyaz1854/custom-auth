@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #f5f1f1;
+            --text: #000000;
+            --accent: #0070f3;
+            --muted: #777;
+            --border: #eaeaea;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-block {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-block a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-block a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div><strong>{{title}}</strong></div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/#docs">Docs</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Contact</h1>
+
+    <div class="contact-block">
+        <p>If you have any questions, suggestions, or feedback,<br> feel free to reach out:</p>
+
+        <p>Email: <a href="alikhan.azirbaev@gmail.com">alikhan.azirbaev@gmail.com</a></p>
+
+        <p>GitHub: <a href="https://github.com/piyaz1854" target="_blank">github.com/piyaz1854</a></p>
+
+        <p>Telegram: <a href="https://t.me/piyaz1854" target="_blank">@piyaz1854</a></p>
+    </div>
+</main>
+
+<footer>
+    <a href="{% url 'privacy' %}">Privacy Policy</a> |
+    <a href="{% url 'contact' %}">Contact</a>
+    <div style="margin-top: 0.5rem;">&copy; {{ year }} {{ title }}. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

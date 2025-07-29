@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #f5f1f1;
+            --text: #000000;
+            --accent: #0070f3;
+            --muted: #777;
+            --border: #eaeaea;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div><strong>{{ title }}</strong></div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#how">How it works</a>
+        <a href="#docs">Docs</a>
+        <a href="#docs">Features</a>
+        <a href="/login">Login</a>
+        <a href="/logout">Logout</a>
+		<a href="/delete">Delete</a>
+        <a href="/register">Register</a>
+    </nav>
+</header>
+
+<main>
+  <h1>Welcome to {{ title }}</h1>
+  <p>
+    A minimal and custom-built access control system.<br>
+    Designed with clean architecture based on Django and Django Rest Framework.
+  </p>
+
+<section id="about" style="margin-top: 4rem;">
+  <h2>About</h2>
+  <p>
+    <strong>{{ title }}</strong> is a simple but solid backend project that shows how to build your own authentication and authorization system without relying on Django’s built-in tools.
+    <br><br>
+    The main idea is pretty clear: users get roles, roles define what they can or can’t do with different parts of the system (we call them “business elements”). All permissions are stored in the database and checked every time someone makes a request.
+    <br><br>
+    Passwords are safely hashed using bcrypt before saving — so no raw passwords ever hit the database. For login, the system uses JWT (JSON Web Tokens), which means no sessions or cookies, just clean token-based authentication.
+    <br><br>
+    This project is great if you want to understand how things work under the hood — from managing user accounts and tokens, to controlling access through roles and custom middleware.
+    <br><br>
+    <strong>Tech Stack:</strong> Python, Django, Django REST Framework, PostgreSQL, pyjwt for working with tokens, and bcrypt for hashing passwords.
+  </p>
+</section>
+
+<section id="how" style="margin-top: 4rem;">
+  <h2>How it works</h2>
+  <p>
+    Everything starts with the user. They can create an account by entering their name, email, and password. After that, they can log in, edit their profile, or deactivate their account if they no longer want to use it. Instead of deleting users from the system, we simply mark them as inactive.
+    <br><br>
+    After logging in, the server gives the user a token. This token must be sent with every request to access protected parts of the system. There are no sessions or cookies involved — the whole system is based on tokens.
+    <br><br>
+    Each request goes through a custom piece of code called middleware. It checks if the token is valid, finds the right user, and connects that user to the request. So when the system handles the request, it already knows who is asking.
+    <br><br>
+    Then comes access control. Every user has a role — like overlord, commander, or just a scout and novice. Each role has its own set of permissions that define what actions are allowed. For example, can the overlord see something, change it, or delete it? And if they can delete — only their own data or everyone’s?
+    <br><br>
+    These rules are stored in the database and checked every time someone tries to do something important. If the user doesn’t send a token, they get a 401 error (not authorized). If they send a token but don’t have permission, it’s a 403 (forbidden). If everything is okay, the system allows the action.
+    <br><br>
+    In the end, the result is a simple and flexible system where you decide who gets access to what — and the rules are clear, easy to manage, and live in the database, not buried in the code.
+  </p>
+</section>
+
+
+
+  <section id="docs" style="margin-top: 4rem;">
+    <h2>Docs</h2>
+    <p>
+      Full API documentation you may find in my repo on Github: @piyaz1854. Also you can test and explore endpoints using cURL (in README.md of repo).
+      <br><br>
+      Users can manage roles, business elements, and access rules.
+    </p>
+  </section>
+
+<section id="features" style="margin-top: 4rem;">
+  <h2>Features</h2>
+  <ul style="list-style: none; padding: 0; margin-top: 1.5rem; line-height: 1.8;">
+    <li>No default Django login or register pages — everything is built manually from the ground up (somewhere used built-in :0).</li>
+    <li>Authentication is fully JWT based.</li>
+    <li>Roles and permissions are stored in the database.</li>
+    <li>Custom middleware checks each request and makes sure the user is allowed to access what they’re asking for.</li>
+    <li>When a user deletes their account, it's just turned off (soft delete).</li>
+  </ul>
+</section>
+
+
+<footer>
+    <a href="{% url 'privacy' %}">Privacy Policy</a> |
+    <a href="{% url 'contact' %}">Contact</a>
+    <div style="margin-top: 0.5rem;">&copy; {{ year }} {{ title }}. All rights reserved. Special for Effective Mobile</div>
+</footer>
+
+</body>
+</html>
