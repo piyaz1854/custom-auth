@@ -7,6 +7,9 @@ JWT-based, role-driven, with access control stored in the database.
 
 POST /api/login/ -> get token -> use it in Bearer header
 
+# How to install:
+git clone <this_repo_http>
+
 ---
 
 ## Features
